@@ -65,6 +65,8 @@ For example, the VO2Max estimate for
 
 will be: __`r vo2max`__.
 
+PLEASE NOTE: __The example is calculated using an embedded R code that gets run when the document is generated__.
+
 ---
 ##  References
 

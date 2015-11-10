@@ -44,6 +44,8 @@ For example, the VO2Max estimate for
 
 will be: __15.33__.
 
+PLEASE NOTE: __The example is calculated using an embedded R code that gets run when the document is generated__.
+
 ---
 ##  References
 
