@@ -1,0 +1,72 @@
+---
+title       : Vo2Max estimator
+subtitle    : Developing Data Products Course Project
+author      : Gianluca Merlo
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## What is the VO2Max estimator
+
+The VO2Max estimator is an app developed with Shiny aimed to measure the level of a person's cardiorespiratory fitness (CRT) using a non exercise model. The CRT is a strong 
+predictor of many risk factors such as overweight, high blood pressure and mortality.
+
+<center>
+![The VO2Max is a measure of cardiovascular fit](https://runneracademy.com/wp-content/uploads/2012/09/vo2maxsymbol.jpg)
+</center>
+
+
+--- .class #id 
+
+## How it works
+The VO2Max estimator implements the non exercize model proposed by George, Stone, and Burkett (1997). It's estimation is made starting from the measurement of sex, body mass index, and a self-report about physical activity.
+
+The application is available at the url: https://gianlucamerlo.shinyapps.io/vo2max
+
+<center>
+![A screenshot of the VO2Max app](./assets/img/vo2max-screenshot.resized.png)
+</center>
+
+---
+
+## Example
+```{r echo = FALSE}
+calculateVo2max <- function(weigth, height, sex, physicalActivityItem1, 
+                            physicalActivityItem2, physicalActivityItem3) {
+    
+    bmi <- weight / (height ^ 2)
+    
+    44.895 + (7.042 * sex) - (0.823 * bmi) + (0.738 * ((physicalActivityItem1 * 1.0) + (physicalActivityItem2 * 1.0))) + (0.688 * physicalActivityItem3)
+}
+
+sex <- list()
+sex[[1]] <- "female"
+sex[[2]] <- "male"
+
+randomValue <- sample(c(1, 2), 1)
+sexIndex <- randomValue - 1
+sex <- sex[[randomValue]]
+age <- ceiling(runif(1, 18, 90))
+weight <- ceiling(runif(1, 40, 120))
+height <- round(runif(1, 1, 2), 2)
+
+vo2max <- round(calculateVo2max(weight, height, sexIndex, 1, 1, 1), 2)
+```
+For example, the VO2Max estimate for 
+
+* a physically inactive __`r age`__ years old __`r sex`__ 
+* who weights __`r weight`__ kg
+* and whose height is __`r height`__ 
+
+will be: __`r vo2max`__.
+
+---
+##  References
+
+* George, J. D., Stone, W. J., & Burkett, L. N. (1997). *Non-exercise VO2max estimation for physically active college students*. Medicine and science in sports and exercise, 29(3), 415-423.
+* Heywood, V. (1998). *The physical fitness specialist certification manual*. Dallas (TX): The Cooper Institute of Aerobics Research.
