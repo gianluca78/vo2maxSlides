@@ -44,7 +44,7 @@ For example, the VO2Max estimate for
 
 will be: __15.33__.
 
-PLEASE NOTE: __The example is calculated using an embedded R code that gets run when the document is generated__.
+PLEASE NOTE: __The example is calculated using an embedded R code that gets run when the document is generated__. Visit https://github.com/gianluca78/vo2maxSlides/blob/gh-pages/index.Rmd to view the R code.
 
 ---
 ##  References
